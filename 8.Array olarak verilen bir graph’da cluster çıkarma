@@ -1,0 +1,49 @@
+8.Array olarak verilen bir graph’da cluster çıkarma.
+
+#include <stdio.h>
+
+#define MAX 10
+
+int graph[MAX][MAX];
+int visited[MAX];
+int n;
+
+void dfs(int v) {
+    visited[v] = 1;
+    printf("%d ", v);
+    for (int i = 0; i < n; i++) {
+        if (graph[v][i] == 1 && !visited[i]) {
+            dfs(i);
+        }
+    }
+}
+
+void findClusters() {
+    for (int i = 0; i < n; i++) {
+        if (!visited[i]) {
+            dfs(i);
+            printf("\n");
+        }
+    }
+}
+
+int main() {
+    n = 7;
+    int temp[7][7] = {
+        {0,1,0,0,0,0,0},
+        {1,0,0,0,0,0,0},
+        {0,0,0,1,0,0,0},
+        {0,0,1,0,0,0,0},
+        {0,0,0,0,0,1,1},
+        {0,0,0,0,1,0,0},
+        {0,0,0,0,1,0,0}
+    };
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            graph[i][j] = temp[i][j];
+        }
+        visited[i] = 0;
+    }
+    findClusters();
+    return 0;
+}

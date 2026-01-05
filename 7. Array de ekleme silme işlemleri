@@ -1,0 +1,43 @@
+7.  Array de ekleme silme işlemleri
+
+#include <stdio.h>
+#define MAX 100
+
+int arr[MAX];
+int size = 0;
+
+void insertAtPosition(int value, int pos) {
+    if (pos < 0 || pos > size) return;
+    for (int i = size; i > pos; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[pos] = value;
+    size++;
+}
+
+void deleteAtPosition(int pos) {
+    if (pos < 0 || pos >= size) return;
+    for (int i = pos; i < size - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+    size--;
+}
+
+void printArray() {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    insertAtPosition(10, 0);
+    insertAtPosition(20, 1);
+    insertAtPosition(30, 2);
+    printArray();
+    insertAtPosition(15, 1);
+    printArray();
+    deleteAtPosition(2);
+    printArray();
+    return 0;
+}
