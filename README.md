@@ -1,3 +1,3 @@
 Rukhsar Sohaily
 2310205503
-Bil.Muh. %30 - I.org.
+Bil.Muh. %30 - I.ogr.
